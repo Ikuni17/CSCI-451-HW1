@@ -7,4 +7,4 @@ September 12, 2017
 
 def main():
     pass
-    # TODO: Implement the Z-Algorithm
+    # TODO: Implement the Z-Algorithm with pattern matching
