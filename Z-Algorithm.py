@@ -4,12 +4,34 @@ Homework #1: Z-Algorithm and Pattern Matching
 CSCI 451/551
 September 12, 2017
 '''
-
-def main():
-    pass
-    # TODO: Implement the Z-Algorithm with pattern matching
-    #Note: Prof. Mumey would like us to write the z-alg and
-    #then create a seperate file with the pattern implementation
-    #For the pattern implementation we only have to keep track of
-    #the z values for the indicies coresponding to the pattern so
-    #the code will just be a hair different. 
+#TODO: Implement the Z-Algorithm with pattern matching(separate file)
+class ZAlgorithm():
+    #creates global variables l,r,k and an array to hold the z scores
+    #creates an array from the input string
+    def __init__(self, pattern):
+        self.l = 0
+        self.r = 0
+        self.k = 0
+        self.z_scores = []
+        self.input_string = list(pattern)
+    
+    #Will decide what case to use based on l,k,r 
+    def driver(self):
+        #if statement to decide what case to chose
+        pass
+    
+    #case 1, k > r    
+    def case_1(self):
+        print "case 1" 
+    
+    #case 2a, K <= R && Z_k < length of Beta
+    #Beta is the string from [k,r]
+    def case_2(self):
+        print "case 2"
+    
+    #case 2b, k <= r && Z_k >= length of Beta    
+    def case_3(self):
+        print "case 3"
+        
+if __name__ == "__main__":
+    run_z = ZAlgorithm("ababab")
