@@ -8,30 +8,51 @@ September 12, 2017
 class ZAlgorithm():
     #creates global variables l,r,k and an array to hold the z scores
     #creates an array from the input string
-    def __init__(self, pattern):
+    def __init__(self, input_text):
         self.l = 0
         self.r = 0
-        self.k = 0
+        self.k = 1
         self.z_scores = []
-        self.input_string = list(pattern)
+        self.input_string = list(input_text)
+
     
     #Will decide what case to use based on l,k,r 
     def driver(self):
         #if statement to decide what case to chose
-        pass
+        if self.k > self.r:
+            run_z.case_1()
+        else :
+            run_z.case_2()
     
     #case 1, k > r    
     def case_1(self):
-        print "case 1" 
-    
+        count = 0
+        char_k = self.input_string[self.k]
+
+        #compares the char at k + count with the char at count
+        while ord(char_k) == ord(self.input_string[count]) :
+            count += 1
+            char_k = self.input_string(self.k + count)
+
+        #update values
+        self.z_scores[self.k] = count
+        self.l = self.k
+        self.r = self.k + count
+        run_z.driver()
+
     #case 2a, K <= R && Z_k < length of Beta
+    #case 2b, k <= r && Z_k >= length of Beta
     #Beta is the string from [k,r]
     def case_2(self):
-        print "case 2"
-    
-    #case 2b, k <= r && Z_k >= length of Beta    
-    def case_3(self):
-        print "case 3"
-        
+        beta = self.input_string[self.k,self.r + 1]
+        if(self.z_scores[self.k] < len(beta)) :
+            #case 2a
+            pass
+        else:
+            #case 2b
+            pass
+
 if __name__ == "__main__":
-    run_z = ZAlgorithm("ababab")
+    input_text = input("Enter your desired string: ")
+    run_z = ZAlgorithm(input_text)
+    run_z.driver()
