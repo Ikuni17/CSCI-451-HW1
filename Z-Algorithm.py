@@ -6,8 +6,44 @@ September 12, 2017
 '''
 
 
-# TODO: Implement the Z-Algorithm with pattern matching(separate file)
-class ZAlgorithm():
+def Z_algorithm(s):
+    l = 0
+    r = 0
+    k = 1
+    z_scores = [0] * len(s)
+    s_list = list(s)
+
+    for i in range(len(s)):
+        # Case 1
+        if k > r:
+            count = 0
+            while ord(s_list[k + count]) == ord(s_list[count]):
+                count += 1
+            z_scores[k] = count
+            l = k
+            r = k + count
+        # Case 2
+        else:
+            beta = s_list[k:(r + 1)]
+            # Case 2a
+            if z_scores[k] < len(beta):
+                k += 1
+                z_scores[k] = z_scores[k - l]
+            # Case 2b
+            else:
+                count = 0
+                while ((r + 1 + count) < len(s_list)) and (
+                            ord(s_list[r + 1 + count]) == ord(s_list[r - k + 1 + count])):
+                    count += 1
+                l = k
+                r = r + count
+                k += 1
+                z_scores[k] = z_scores[r - k + 1] + count
+
+    return z_scores
+
+
+'''class ZAlgorithm():
     # creates local variables l,r,k and an array to hold the z scores
     # creates an array from the input string
     def __init__(self, input_text):
@@ -73,10 +109,12 @@ class ZAlgorithm():
                 self.driver()
 
     def print_z_scores(self):
-        print(self.z_scores)
+        print(self.z_scores)'''
+
 
 if __name__ == "__main__":
-    input_text = input("Enter your desired string: ")
+    '''input_text = input("Enter your desired string: ")
     run_z = ZAlgorithm(input_text)
     run_z.driver()
-    run_z.print_z_scores()
+    run_z.print_z_scores()'''
+    print(Z_algorithm('abababaaa'))
