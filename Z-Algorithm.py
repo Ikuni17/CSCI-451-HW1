@@ -7,15 +7,15 @@ September 12, 2017
 
 
 # TODO: Implement the Z-Algorithm with pattern matching(separate file)
-class ZAlgorithm():
-    # creates global variables l,r,k and an array to hold the z scores
+def ZAlgorithm(s):
+    # creates local variables l,r,k and an array to hold the z scores
     # creates an array from the input string
-    def __init__(self, input_text):
-        self.l = 0
-        self.r = 0
-        self.k = 1
-        self.z_scores = []
-        self.input_string = list(input_text)
+    l = 0
+    r = 0
+    k = 1
+    z_scores = [0] * len(s)
+    s_list = list(s)
+    #print(s_list)
 
     # Will decide what case to use based on l,k,r
     def driver(self):
@@ -56,5 +56,4 @@ class ZAlgorithm():
 
 if __name__ == "__main__":
     input_text = input("Enter your desired string: ")
-    run_z = ZAlgorithm(input_text)
-    run_z.driver()
+    ZAlgorithm(input_text)
