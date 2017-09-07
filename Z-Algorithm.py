@@ -9,36 +9,33 @@ September 12, 2017
 def Z_algorithm(s):
     l = 0
     r = 0
-    k = 1
     z_scores = [0] * len(s)
     s_list = list(s)
 
-    for i in range(len(s)):
+    for k in range(1, len(s)):
         # Case 1
         if k > r:
             count = 0
-            while ord(s_list[k + count]) == ord(s_list[count]):
+            while (k + count) < len(s_list) and s_list[k + count] == s_list[count]:
                 count += 1
             z_scores[k] = count
-            l = k
-            r = k + count
+            if count > 0:
+                l = k
+                r = k + count - 1
         # Case 2
         else:
             beta = s_list[k:(r + 1)]
             # Case 2a
-            if z_scores[k] < len(beta):
-                k += 1
+            if z_scores[k - l] < len(beta):
                 z_scores[k] = z_scores[k - l]
             # Case 2b
             else:
-                count = 0
-                while ((r + 1 + count) < len(s_list)) and (
-                            ord(s_list[r + 1 + count]) == ord(s_list[r - k + 1 + count])):
+                count = r + 1
+                while count < len(s_list) and s_list[count] == s_list[count - k]:
                     count += 1
                 l = k
-                r = r + count
-                k += 1
-                z_scores[k] = z_scores[r - k + 1] + count
+                r = count - 1
+                z_scores[k] = count - k
 
     return z_scores
 
@@ -111,10 +108,11 @@ def Z_algorithm(s):
     def print_z_scores(self):
         print(self.z_scores)'''
 
-
 if __name__ == "__main__":
     '''input_text = input("Enter your desired string: ")
     run_z = ZAlgorithm(input_text)
     run_z.driver()
     run_z.print_z_scores()'''
+
+    # Correct output should be [0,0,5,0,3,0,1,1,1]
     print(Z_algorithm('abababaaa'))
