@@ -11,10 +11,10 @@ from string import ascii_lowercase
 
 #Accepts a string, and returns a list of the z scores
 def Z_algorithm(s):
-    #will hold the left and right side of the "box"
+    #Holds the left and right side of the "box"
     l = 0
     r = 0
-    #Will hold the z scores for all the indicies in the string
+    #Holds the z scores for all the indicies in the string
     z_scores = [0] * len(s)
     #Creates a list from the pattern
     s_list = list(s)
