@@ -44,7 +44,7 @@ def Z_algorithm(s):
 
 def generate_string(length):
     #return ''.join(choice(ascii_lowercase) for i in range(length))
-    return ''.join(choice('a,b,c,d') for i in range(length))
+    return ''.join(choice('a') for i in range(length))
 
 '''class ZAlgorithm():
     # creates local variables l,r,k and an array to hold the z scores
@@ -128,5 +128,5 @@ if __name__ == "__main__":
         length = 2**i
         s_input = generate_string(length)
         print("Starting iteration {0} with string length {1}".format(i-1, length))
-        time = timeit.timeit("Z_algorithm({0})".format(s_input),globals=globals(), number=1)
+        time = timeit.timeit("Z_algorithm('{0}')".format(s_input),globals=globals(), number=1)
         print("\tTime taken: {0}".format(time))
