@@ -1,6 +1,6 @@
 '''
 Chase Austvold, Carsen Ball, Bradley White
-Homework #1: Z-Algorithm and Pattern Matching
+Homework #1: Z-Algorithm
 CSCI 451/551
 September 12, 2017
 '''
