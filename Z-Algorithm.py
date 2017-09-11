@@ -5,6 +5,9 @@ CSCI 451/551
 September 12, 2017
 '''
 
+import timeit
+from random import choice
+from string import ascii_lowercase
 
 def Z_algorithm(s):
     l = 0
@@ -39,6 +42,9 @@ def Z_algorithm(s):
 
     return z_scores
 
+def generate_string(length):
+    #return ''.join(choice(ascii_lowercase) for i in range(length))
+    return ''.join(choice('a,b,c,d') for i in range(length))
 
 '''class ZAlgorithm():
     # creates local variables l,r,k and an array to hold the z scores
@@ -115,4 +121,12 @@ if __name__ == "__main__":
     run_z.print_z_scores()'''
 
     # Correct output should be [0,0,5,0,3,0,1,1,1]
-    print(Z_algorithm('abababaaa'))
+    #print(Z_algorithm('abababaaa'))
+    timeit.timeit("Z_algorithm('abababaaa')",globals=globals(), number=1)
+
+    for i in range(2,3):
+        length = 2**i
+        s_input = generate_string(length)
+        print("Starting iteration {0} with string length {1}".format(i-1, length))
+        time = timeit.timeit("Z_algorithm({0})".format(s_input),globals=globals(), number=1)
+        print("\tTime taken: {0}".format(time))
